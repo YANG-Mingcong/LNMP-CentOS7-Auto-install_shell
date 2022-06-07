@@ -4,18 +4,19 @@ yum -y upgrade;
 
 systemctl stop firewalld;
 
-
+#install nginx
 yum -y install nginx;
 systemctl start nginx;
 systemctl enable nginx;
 systemctl stop nginx;
 
+#install mariadb
 yum -y install mariadb mariadb-server;
 systemctl start mariadb;
 systemctl enable mariadb;
 
-
-yum install \
+#install php
+yum -y install \
 https://repo.ius.io/ius-release-el7.rpm \
 https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm;
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm;
@@ -25,5 +26,8 @@ systemctl enable php-fpm;
 systemctl stop php-fpm;
 
 systemctl daemon-reload;
+
+#config nginx
+
 
 
