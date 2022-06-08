@@ -27,7 +27,18 @@ systemctl stop php-fpm;
 
 systemctl daemon-reload;
 
-#config nginx
+#install cerbot
+yum -y install snapd
+systemctl enable --now snapd.socket
+ln -s /var/lib/snapd/snap /snap
+
+systemctl daemon-reload
+snap install core
+snap refresh core
+snap install --classic certbot
+
+ln -s /snap/bin/certbot /usr/bin/certbot
+
 
 
 
